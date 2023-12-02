@@ -52,17 +52,29 @@ public class PlayerMovement : MonoBehaviour
             Player1();
         else if(player == PlayerType.Player2)
             Player2();
-        
+        //jump animation
+        if (!IsGrounded())
+        {
+            anim.SetBool("jump", true);
+        }
+        else
+        {
+            anim.SetBool("jump", false);
+        }
+
     }
     private void Player1()
     {
+
         if (Input.GetKey(KeyCode.D))
         {
             rb.velocity = new Vector2(moveSpeed * Time.deltaTime*50, rb.velocity.y);
+            anim.SetBool("run", true);
         } 
         if (Input.GetKey(KeyCode.A))
         {
             rb.velocity = new Vector2(-moveSpeed * Time.deltaTime*50, rb.velocity.y);
+            anim.SetBool("run", true);
     
         }
         if (Input.GetKeyDown(KeyCode.W) && IsGrounded())
@@ -90,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         {
             fm.Block("player1",false);
         }
-
+        //flip sprite
         if(transform.position.x < opponent.transform.position.x)
         {
             transform.localScale = new Vector3(1f,transform.localScale.y,transform.localScale.z);
@@ -100,6 +112,17 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(-1f,transform.localScale.y,transform.localScale.z);
             opponent.transform.localScale = new Vector3(1f, opponent.transform.localScale.y, opponent.transform.localScale.z);
+        }
+        
+        //animation end run
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            anim.SetBool("run", false);
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            anim.SetBool("run", false);
+
         }
 
     }

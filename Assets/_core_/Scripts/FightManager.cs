@@ -12,8 +12,10 @@ public class FightManager : MonoBehaviour
     private bool Iframe1;
     private bool Iframe2;
     public GameSet gameSet;
+    [SerializeField] private Animator anim1;
+    [SerializeField] private Animator anim2;
 
-    
+
 
 
 
@@ -52,11 +54,13 @@ public class FightManager : MonoBehaviour
         if(player == "player1" && !Iframe2 && player2HP > 0)
         {
             player2Health.localScale = new Vector3((player2HP = player2HP - attackValue) * 0.01f, player2Health.localScale.y, player2Health.localScale.z);
+            
         }
             
         else if (player == "player2" && !Iframe1 && player1HP >0)
         {
             player1Health.localScale = new Vector3((player1HP = player1HP - attackValue) * 0.01f, player1Health.localScale.y, player1Health.localScale.z);
+            anim1.SetTrigger("dmg");
         }
         Debug.Log("hits" + player);
 

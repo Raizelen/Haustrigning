@@ -1476,6 +1476,8 @@ MonoBehaviour:
   player1Health: {fileID: 1623185751}
   player2Health: {fileID: 1280988801}
   gameSet: {fileID: 546872299}
+  anim1: {fileID: 924807450}
+  anim2: {fileID: 1552315350}
 --- !u!1 &1913258867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,7 +1866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2325703990263174214, guid: c6d35794f7c50d7488ca8d11cae24459, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6935
+      value: -0.71
       objectReference: {fileID: 0}
     - target: {fileID: 3552798851447111498, guid: c6d35794f7c50d7488ca8d11cae24459, type: 3}
       propertyPath: m_Size.y
@@ -1892,7 +1894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4051682345028538367, guid: c6d35794f7c50d7488ca8d11cae24459, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.41
+      value: -2.452
       objectReference: {fileID: 0}
     - target: {fileID: 4051682345028538367, guid: c6d35794f7c50d7488ca8d11cae24459, type: 3}
       propertyPath: m_LocalPosition.z
