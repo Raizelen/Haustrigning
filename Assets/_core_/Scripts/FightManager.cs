@@ -12,6 +12,8 @@ public class FightManager : MonoBehaviour
     private bool Iframe1 = false;
     private bool Iframe2 = false;
     public GameSet gameSet;
+    [SerializeField] private Animator anim1;
+    [SerializeField] private Animator anim2;
     
 
 

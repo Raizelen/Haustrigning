@@ -24,7 +24,8 @@ public class PlayerMovement : MonoBehaviour
     //attacks
     [SerializeField] private float lightHit = 10;
     [SerializeField] private float HardHit = 20;
-    
+    //Animation
+    private Animator anim;
     
 
     public enum PlayerType
@@ -38,7 +39,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-   
+        anim = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -71,7 +73,9 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
+            anim.SetTrigger("attack1");
             Attack("player1",lightHit);
+            
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -111,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Keypad1))
         {
+            anim.SetTrigger("attack1");
             Attack("player2",lightHit);
         }
         if (Input.GetKeyDown(KeyCode.Keypad2))
