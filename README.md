@@ -1,2 +1,2 @@
 # Haustrigning
- A fighting Game
+ A local multiplayer(sameKeyboard) fighting Game
