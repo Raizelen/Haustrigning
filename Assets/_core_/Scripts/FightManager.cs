@@ -9,11 +9,10 @@ public class FightManager : MonoBehaviour
     [SerializeField] private Transform player2Health;
     private float player1HP;
     private float player2HP;
-    private bool Iframe1 = false;
-    private bool Iframe2 = false;
+    private bool Iframe1;
+    private bool Iframe2;
     public GameSet gameSet;
-    [SerializeField] private Animator anim1;
-    [SerializeField] private Animator anim2;
+
     
 
 
@@ -23,6 +22,8 @@ public class FightManager : MonoBehaviour
     {
         player1HP = 100f;
         player2HP = 100f;
+        Iframe1 = false;
+        Iframe2 = false;
     }
 
     // Update is called once per frame
@@ -68,5 +69,8 @@ public class FightManager : MonoBehaviour
             Iframe2 = value;
         Debug.Log(player + "Blocks");
     }
+
+
+
 
 }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4369405524239684652}
   - component: {fileID: 8936115856261317710}
   - component: {fileID: 4449346801495978458}
-  - component: {fileID: 538310303426785427}
   - component: {fileID: 9132172085294741193}
   m_Layer: 0
   m_Name: Player1
@@ -143,28 +142,8 @@ MonoBehaviour:
   fm: {fileID: 0}
   lightHit: 10
   HardHit: 20
+  opponent: {fileID: 0}
   player: 0
---- !u!95 &538310303426785427
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2169780727623300063}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b35f20e61fec3894a8d3dab3d138978a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!70 &9132172085294741193
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

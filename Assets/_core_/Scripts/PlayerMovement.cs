@@ -14,18 +14,20 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     //attack
     public Transform attackPoint;
-    public float attackRange;
+    public float attackRange = 0.8f;
     public LayerMask playerAttacked;
 
     //fight manager
     public FightManager fm;
-    private bool isFacingRight = true;
+    //private bool isFacingRight = true;
 
     //attacks
     [SerializeField] private float lightHit = 10;
     [SerializeField] private float HardHit = 20;
     //Animation
-    private Animator anim;
+    [SerializeField]private Animator anim;
+    //opponent
+    [SerializeField] private Transform opponent;
     
 
     public enum PlayerType
@@ -74,8 +76,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U))
         {
             anim.SetTrigger("attack1");
-            Attack("player1",lightHit);
-            
+            Attack("player1", lightHit);
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -90,9 +91,16 @@ public class PlayerMovement : MonoBehaviour
             fm.Block("player1",false);
         }
 
-        if (isFacingRight && rb.velocity.x < 0f || !isFacingRight && rb.velocity.x > 0)
-                FlipSprite();
-
+        if(transform.position.x < opponent.transform.position.x)
+        {
+            transform.localScale = new Vector3(1f,transform.localScale.y,transform.localScale.z);
+            opponent.transform.localScale = new Vector3(-1f, opponent.transform.localScale.y, opponent.transform.localScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1f,transform.localScale.y,transform.localScale.z);
+            opponent.transform.localScale = new Vector3(1f, opponent.transform.localScale.y, opponent.transform.localScale.z);
+        }
 
     }
         private void Player2()
@@ -131,28 +139,33 @@ public class PlayerMovement : MonoBehaviour
             fm.Block("player2", false);
         }
 
-        if (!isFacingRight && rb.velocity.x < 0f || isFacingRight && rb.velocity.x > 0)
-                FlipSprite();
 
+        if (transform.position.x > opponent.transform.position.x)
+        {
+            transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z);
+            opponent.transform.localScale = new Vector3(-1f, opponent.transform.localScale.y, opponent.transform.localScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
+            opponent.transform.localScale = new Vector3(1f, opponent.transform.localScale.y, opponent.transform.localScale.z);
+        }
     }
     private bool IsGrounded()
     {
 
         return Physics2D.OverlapCircle(groundCheck.position,0.02f,groundLayer);
     }
-    private void FlipSprite()
-    {
-        isFacingRight = !isFacingRight;
-        transform.localScale = new Vector3(transform.localScale.x * -1f,transform.localScale.y,transform.localScale.z);
-    }
+
 
     private void Attack(string playerAttacks,float AttackType)
     {
         
         if (Physics2D.OverlapCircle(attackPoint.position, attackRange, playerAttacked))
         {
-
+            Debug.Log("Attack layer");
             fm.UpdateHealth(playerAttacks,AttackType);
         }
+        
     }
 }
